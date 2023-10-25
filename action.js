@@ -18,3 +18,21 @@ for(let i=0;i<items.length;i++){
     items[i].style.fontWeight = 'bold';
 }
 
+// changing a list manually added with different class name
+
+let myLastList = document.getElementsByClassName('myLastList');
+console.log(myLastList);
+myLastList.textContent = 'my list';
+// it doesn't change anything bcz getElementByClassName() return array of nodes and not specific node
+// we can change it like this, although we shouldn't
+
+myLastList[0].textContent = 'this is my list';
+
+// using getElementsByTagName
+
+let li = document.getElementsByTagName('li');
+
+
+let len = li.length;
+li[len-1].textContent = "my list"
+
