@@ -9,4 +9,8 @@ let addItems = document.getElementById('addItems');
 addItems.style.fontWeight = 'bold';
 addItems.style.color = "green";
 
+let items = document.getElementsByClassName('list-group-item');
+//changing the first list item and not the second one
+items[0].textContent = 'changed list name';
+items[2].style.backgroundColor = 'green';
 
