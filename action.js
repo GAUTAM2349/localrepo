@@ -39,11 +39,22 @@ li[len-1].textContent = "my list"
 
 // making the bgcolor of 2nd item green
 
-let list2 = document.querySelector('.list-group-item:nth-child(2)');
-list2.style.backgroundColor = 'green';
+// let list2 = document.querySelector('.list-group-item:nth-child(2)');
+// list2.style.backgroundColor = 'green';
 
-//making the third item invisible
+// //making the third item invisible
 
-let list3 = document.querySelector('.list-group-item:nth-child(3)');
-list3.style.display = 'none';
+// let list3 = document.querySelector('.list-group-item:nth-child(3)');
+// list3.style.display = 'none';
 
+//using queryselectorall to change the font color to green for second item
+
+let listtwo = document.querySelectorAll('.list-group-item');
+listtwo[1].style.color = 'green';
+
+//making the bgcolor of all odd list items green
+let listtwoodd = document.querySelectorAll('.list-group-item:nth-child(odd)');
+
+for(let i=0;i<listtwo.length;i++){
+    listtwoodd[i].style.backgroundColor = 'green';
+}
