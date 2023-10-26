@@ -36,3 +36,14 @@ let li = document.getElementsByTagName('li');
 let len = li.length;
 li[len-1].textContent = "my list"
 
+
+// making the bgcolor of 2nd item green
+
+let list2 = document.querySelector('.list-group-item:nth-child(2)');
+list2.style.backgroundColor = 'green';
+
+//making the third item invisible
+
+let list3 = document.querySelector('.list-group-item:nth-child(3)');
+list3.style.display = 'none';
+
