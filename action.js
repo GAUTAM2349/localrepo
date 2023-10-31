@@ -8,10 +8,7 @@ console.dir(document.body);
 
 let form = document.querySelector('#addForm');
 let temp = document.createElement('li');
-temp.textContent = 'temporary';
-console.dir(temp)
-form.appendChild(temp);
-console.dir(form);
+
 
 form.addEventListener('submit',addItem);
 
@@ -21,13 +18,23 @@ items.addEventListener('click',removeItems)
 function addItem(e){ //e helps to acces event related properties, 'e' is not compulsory and can be replaced by any variable name
     e.preventDefault();
 
-    let newItem = document.querySelector('#newItem').value;
+    let newItem = document.querySelectorAll('#newItem');
+    console.log(newItem);
     let ul = document.querySelector('.list-group');
     let li = document.createElement('li');
     li.className = 'list-group-item';
-    li.textContent = newItem;
 
-    //adding edit button 
+    Array.from(newItem).forEach((item)=>{
+        
+        let txt = document.createTextNode(item.value);
+        li.appendChild(txt);
+
+        li.textContent += " ";
+         
+    
+    });
+
+    // //adding edit button 
 
     let editButton = document.createElement('button');
     
@@ -60,4 +67,26 @@ function removeItems(e){
             items.removeChild(parent);
         }
     }
+}
+
+// filtering
+
+let filter = document.querySelector('#filter');
+filter.addEventListener('keyup',filterText);
+
+function filterText(e){
+    let txt = e.target.value.toLowerCase();
+    let itemList = document.getElementsByTagName('li');
+
+    Array.from(itemList).forEach(function(item){
+        console.log(item);
+        let listText = item.firstChild.textContent;
+        if(listText.toLowerCase().indexOf(txt) != -1){
+            item.style.display = 'block';
+        }
+        else{
+            item.style.display = 'none';
+        }
+    })
+    
 }
