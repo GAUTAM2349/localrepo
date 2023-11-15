@@ -19,6 +19,7 @@ function addItem(e){ //e helps to acces event related properties, 'e' is not com
     e.preventDefault();
 
     let newItem = document.querySelectorAll('#newItem');
+    console.log("starts here ");
     console.log(newItem);
     let ul = document.querySelector('.list-group');
     let li = document.createElement('li');
@@ -90,3 +91,25 @@ function filterText(e){
     })
     
 }
+
+/*
+  
+*/
+
+// local storage
+
+localStorage.setItem("name","gautam");
+
+// sessionStorage.setItem("sname","GAUTAM")
+localStorage.setItem('age','13');
+
+//storing objects in local  storage
+
+let address = {
+    country: "india",
+    state: "punjab",
+    city: "amritsar",
+    street: "don't know"
+}
+
+localStorage.setItem('address',JSON.stringify(address));
