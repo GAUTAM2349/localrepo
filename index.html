@@ -9,10 +9,10 @@
 
   <form onsubmit="addToLocalStorage(event)" autocomplete="on">
     <label for="name">Name :</label></br>
-    <input type="text" id="name" name="name" class="formInput"><br/>
+    <input type="text" id="name" name="name" class="formInput name"><br/>
 
     <label for="age">Age :</label></br>
-    <input type="text" id="age" name="age" class="formInput"><br/><br/>
+    <input type="text" id="age" name="age" class="formInput age"><br/><br/>
 
     <button type="submit">Submit</button>
     
@@ -52,15 +52,40 @@
     deleteButton.textContent = 'Delete';
     li.appendChild(deleteButton);
 
+
+    let editButton = document.createElement('button');
+    editButton.className = "edit";
+    editButton.addEventListener('click',editItems);
+    editButton.textContent = 'Edit';
+    li.appendChild(editButton);
+
+
     ul.appendChild(li);
    
     }
 
     function removeItems(e){
     e.preventDefault();
-    console.log(e.target.parentNode.getAttribute('name'));
+    // console.log(e.target.parentNode.getAttribute('name'));
     localStorage.removeItem(e.target.parentNode.getAttribute('name'));
     e.target.parentNode.style.display = 'none';
+}
+
+function editItems(e){
+  e.preventDefault();
+  
+  let li = e.target.parentNode;
+  let objectKey = li.getAttribute('name');
+  let parsedObject = JSON.parse(localStorage.getItem(objectKey));
+  console.log(parsedObject.age);
+
+  let nameInput = document.querySelector('.name');
+  let ageInput = document.querySelector('.age');
+  nameInput.value = parsedObject.name;
+  ageInput.value = parsedObject.age;
+
+
+  removeItems(e);
 }
 
     
