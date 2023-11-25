@@ -18,12 +18,17 @@
     
   </form>
 
+  <ul class="myList">
+
+  </ul>
+
   <script>
   
     
     console.log("hello");
     
     function addToLocalStorage(e){
+      e.preventDefault();
       let name = e.target.name.value;
       let age = e.target.age.value;
 
@@ -33,9 +38,32 @@
       }
 
       localStorage.setItem(e.target.name.value,JSON.stringify(obj))
+
+      let li = document.createElement('li');
+    li.setAttribute('name',obj.name);
+    li.textContent = obj.name;
+    li.style.border = '5px';
+    let ul = document.querySelector('.myList');
+    ul.appendChild(li);
+
+    let deleteButton = document.createElement('button');
+    deleteButton.className = "delete";
+    deleteButton.addEventListener('click',removeItems);
+    deleteButton.textContent = 'Delete';
+    li.appendChild(deleteButton);
+
+    ul.appendChild(li);
+   
     }
 
-   
+    function removeItems(e){
+    e.preventDefault();
+    console.log(e.target.parentNode.getAttribute('name'));
+    localStorage.removeItem(e.target.parentNode.getAttribute('name'));
+    e.target.parentNode.style.display = 'none';
+}
+
+    
   </script>
   
 </body>
